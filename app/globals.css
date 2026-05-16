@@ -1,26 +1,64 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --navy: #3c4f62;
+  --orange: #eaa375;
+  --navy-light: #4f6479;
+  --navy-dark: #2d3d4e;
+  --orange-light: #f0bc9e;
+  --cream: #faf8f5;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--cream);
+  color: var(--navy);
+  font-family: Georgia, "Times New Roman", serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.option-btn {
+  border: 2px solid #d1d5db;
+  background: white;
+  color: var(--navy);
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.option-btn:hover {
+  border-color: var(--orange);
+  background: #fdf6f0;
+}
+
+.option-btn.selected {
+  border-color: var(--orange);
+  background: var(--orange);
+  color: white;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.35s ease forwards;
+}
+
+.band-hard {
+  border-left: 4px solid #c0392b;
+  background: #fdf5f5;
+}
+
+.band-middle {
+  border-left: 4px solid var(--orange);
+  background: #fef8f3;
+}
+
+.band-settled {
+  border-left: 4px solid #27ae60;
+  background: #f3fdf6;
 }
