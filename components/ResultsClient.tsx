@@ -132,14 +132,14 @@ function Results() {
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-4">
           <a
-            href="https://northandnimble.co.uk/coaching"
+            href="https://www.northandnimble.co.uk/book-a-call"
             className="flex-1 text-center px-6 py-3.5 rounded-full text-white font-medium transition-opacity hover:opacity-90 text-sm"
             style={{ backgroundColor: "var(--navy)" }}
           >
             Explore coaching with me
           </a>
           <a
-            href="https://northandnimble.co.uk/programmes"
+            href="https://www.northandnimble.co.uk/book-a-call"
             className="flex-1 text-center px-6 py-3.5 rounded-full font-medium transition-colors hover:bg-white text-sm border"
             style={{
               color: "var(--navy)",
