@@ -79,6 +79,12 @@ export const QUESTIONS: Question[] = [
     id: 9,
     text: "I know what success looks like for me in this role over the next six months.",
     dimension: 3,
+    options: [
+      { label: "Not at all", value: 1 },
+      { label: "Partly", value: 2 },
+      { label: "Mostly", value: 3 },
+      { label: "Yes, clearly", value: 4 },
+    ],
   },
   {
     id: 10,
@@ -99,6 +105,12 @@ export const QUESTIONS: Question[] = [
     id: 13,
     text: "I am building the relationships I need to be effective in this role.",
     dimension: 4,
+    options: [
+      { label: "Not yet", value: 1 },
+      { label: "Making a start", value: 2 },
+      { label: "Mostly there", value: 3 },
+      { label: "Yes, definitely", value: 4 },
+    ],
   },
   {
     id: 14,
@@ -110,11 +122,10 @@ export const QUESTIONS: Question[] = [
     text: "I have at least one person at work I can be genuinely honest with about how I am finding things.",
     dimension: 4,
     options: [
-      { label: "Rarely", value: 1 },
-      { label: "Occasionally", value: 2 },
-      { label: "Frequently", value: 3 },
-      { label: "Almost always", value: 4 },
       { label: "Not yet", value: null },
+      { label: "Not really", value: 1 },
+      { label: "To some extent", value: 3 },
+      { label: "Yes, definitely", value: 4 },
     ],
   },
   {

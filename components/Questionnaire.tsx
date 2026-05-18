@@ -7,12 +7,16 @@ import EmailGate from "@/components/EmailGate";
 
 type Step = "intro" | "questions" | "email";
 
+// Wrap the selected value in an object so { value: null } (N/A selected)
+// is unambiguously distinct from null (nothing selected yet).
+type Selection = { value: number | null } | null;
+
 export default function Questionnaire() {
   const router = useRouter();
   const [step, setStep] = useState<Step>("intro");
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number | null>>({});
-  const [selected, setSelected] = useState<number | null | undefined>(undefined);
+  const [selection, setSelection] = useState<Selection>(null);
 
   const question = QUESTIONS[currentQ];
   const options: ScaleOption[] = question.options ?? DEFAULT_OPTIONS;
@@ -25,14 +29,14 @@ export default function Questionnaire() {
       : null;
 
   function handleSelect(value: number | null) {
-    setSelected(value);
+    setSelection({ value });
   }
 
   function handleNext() {
-    if (selected === undefined) return;
-    const updated = { ...answers, [question.id]: selected };
+    if (selection === null) return;
+    const updated = { ...answers, [question.id]: selection.value };
     setAnswers(updated);
-    setSelected(undefined);
+    setSelection(null);
 
     if (currentQ < total - 1) {
       setCurrentQ(currentQ + 1);
@@ -44,13 +48,18 @@ export default function Questionnaire() {
   function handleBack() {
     if (currentQ === 0) {
       setStep("intro");
-      setSelected(undefined);
+      setSelection(null);
       return;
     }
     const prevQ = currentQ - 1;
     setCurrentQ(prevQ);
-    const prevAnswer = answers[QUESTIONS[prevQ].id];
-    setSelected(prevAnswer !== undefined ? prevAnswer : undefined);
+    const prevId = QUESTIONS[prevQ].id;
+    // Restore previous answer if one exists (including null-valued answers like N/A)
+    if (prevId in answers) {
+      setSelection({ value: answers[prevId] });
+    } else {
+      setSelection(null);
+    }
   }
 
   function handleEmailComplete(name: string, email: string) {
@@ -126,10 +135,7 @@ export default function Questionnaire() {
         </div>
 
         {/* Question card */}
-        <div
-          className="bg-white rounded-2xl shadow-sm p-8 md:p-10 mb-6 fade-in"
-          key={currentQ}
-        >
+        <div className="bg-white rounded-2xl shadow-sm p-8 md:p-10 mb-6 fade-in" key={currentQ}>
           <p
             className="text-lg md:text-xl leading-relaxed mb-8"
             style={{ color: "var(--navy)", fontFamily: "Georgia, serif" }}
@@ -141,7 +147,7 @@ export default function Questionnaire() {
           <div className="flex flex-col gap-3">
             {options.map((opt) => {
               const isSelected =
-                selected !== undefined && selected === opt.value;
+                selection !== null && selection.value === opt.value;
               return (
                 <button
                   key={opt.label}
@@ -166,7 +172,7 @@ export default function Questionnaire() {
           </button>
           <button
             onClick={handleNext}
-            disabled={selected === undefined}
+            disabled={selection === null}
             className="px-6 py-2.5 rounded-full text-white text-sm font-medium transition-opacity disabled:opacity-30"
             style={{ backgroundColor: "var(--navy)" }}
           >
