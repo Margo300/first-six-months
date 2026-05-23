@@ -57,7 +57,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 5,
-    text: "I feel settled in how I come across to the people around me.",
+    text: "I feel confident in how I come across to the people around me.",
     dimension: 2,
   },
   {
@@ -119,7 +119,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 15,
-    text: "I have at least one person at work I can be genuinely honest with about how I am finding things.",
+    text: "I have at least one person at work I can be honest with about how I am finding things.",
     dimension: 4,
     options: [
       { label: "Not yet", value: null },
