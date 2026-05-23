@@ -130,7 +130,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 16,
-    text: "I have found a way to navigate the shift in my relationships with people who were previously my peers.",
+    text: "If I have been promoted within the same organisation, I have successfully managed the shift in relationships with people who were previously my peers.",
     dimension: 4,
     options: [
       { label: "Rarely", value: 1 },
