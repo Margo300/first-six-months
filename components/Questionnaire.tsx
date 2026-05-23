@@ -90,9 +90,10 @@ export default function Questionnaire() {
               className="text-base md:text-lg leading-relaxed"
               style={{ color: "var(--navy-light)", fontFamily: "Georgia, serif" }}
             >
-              This short check-in is designed to help you take stock of where
-              you are. There are no right or wrong answers — only honest ones.
-              It takes around five minutes.
+              This short check-in is for leaders in a new role or within their
+              first six months. It is designed to help you take stock of where
+              you are, honestly and confidentially. There are no right or wrong
+              answers. It takes around five minutes.
             </p>
           </div>
           <div className="text-center">

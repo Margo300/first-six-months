@@ -65,8 +65,8 @@ function Results() {
             style={{ color: "var(--navy-light)" }}
           >
             Here is where you are landing across four dimensions. These results
-            are a snapshot, not a verdict — they reflect how things are feeling
-            right now, and that will change.
+            are a snapshot, not a fixed outcome. They reflect how things are
+            feeling right now, and that will change.
           </p>
         </div>
 
@@ -102,12 +102,15 @@ function Results() {
               >
                 {copy.heading}
               </h3>
-              <p
-                className="text-sm leading-relaxed"
-                style={{ color: "var(--navy-light)" }}
-              >
-                {copy.body}
-              </p>
+              {copy.body.split("\n\n").map((para, i) => (
+                <p
+                  key={i}
+                  className="text-sm leading-relaxed mt-2"
+                  style={{ color: "var(--navy-light)" }}
+                >
+                  {para}
+                </p>
+              ))}
             </div>
           ))}
         </div>
@@ -122,8 +125,8 @@ function Results() {
           }}
         >
           If any of your reflections today have brought up feelings that go
-          beyond the pressures of a new role — or if you have been finding
-          things particularly hard recently — it is worth speaking to someone
+          beyond the pressures of a new role, or if you have been finding
+          things particularly hard recently, it is worth speaking to someone
           you trust. That might be your GP, a counsellor, or your
           organisation&apos;s Employee Assistance Programme if you have access
           to one. You do not need to be in crisis to seek support.
@@ -132,14 +135,14 @@ function Results() {
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-4">
           <a
-            href="https://www.northandnimble.co.uk/book-a-call"
+            href="https://www.northandnimble.co.uk/coaching"
             className="flex-1 text-center px-6 py-3.5 rounded-full text-white font-medium transition-opacity hover:opacity-90 text-sm"
             style={{ backgroundColor: "var(--navy)" }}
           >
             Explore coaching with me
           </a>
           <a
-            href="https://www.northandnimble.co.uk/book-a-call"
+            href="https://www.northandnimble.co.uk/programmes"
             className="flex-1 text-center px-6 py-3.5 rounded-full font-medium transition-colors hover:bg-white text-sm border"
             style={{
               color: "var(--navy)",
