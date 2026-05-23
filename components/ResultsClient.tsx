@@ -25,7 +25,7 @@ const BAND_DOT: Record<Band, string> = {
 
 function Results() {
   const params = useSearchParams();
-  const name = params.get("name") ?? "there";
+  const name = params.get("name") ?? "";
   const raw = params.get("answers");
 
   let answers: Record<number, number | null> = {};
@@ -58,7 +58,7 @@ function Results() {
             className="text-3xl md:text-4xl font-normal mb-4 leading-snug"
             style={{ color: "var(--navy)" }}
           >
-            Your results, {firstName}
+            Your results{firstName ? `, ${firstName}` : ""}
           </h1>
           <p
             className="text-base leading-relaxed"
