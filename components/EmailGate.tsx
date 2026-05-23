@@ -3,10 +3,11 @@
 import { useState } from "react";
 
 type Props = {
+  answers: Record<number, number | null>;
   onComplete: (name: string, email: string) => void;
 };
 
-export default function EmailGate({ onComplete }: Props) {
+export default function EmailGate({ answers, onComplete }: Props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
@@ -30,7 +31,11 @@ export default function EmailGate({ onComplete }: Props) {
       await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: name.trim(), email: email.trim() }),
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          answers,
+        }),
       });
     } catch {
       // Don't block the user if MailerLite fails

@@ -110,7 +110,7 @@ export default function Questionnaire() {
   }
 
   if (step === "email") {
-    return <EmailGate onComplete={handleEmailComplete} />;
+    return <EmailGate answers={answers} onComplete={handleEmailComplete} />;
   }
 
   return (
